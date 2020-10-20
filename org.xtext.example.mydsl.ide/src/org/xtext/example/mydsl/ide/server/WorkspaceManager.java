@@ -457,4 +457,7 @@ public class WorkspaceManager {
 		return openDocuments.containsKey(uri);
 	}
 
+	public BuildManager.Buildable didSaveTextDocumentContent(URI uri) {
+		return didChangeFiles(ImmutableList.of(uri), Collections.emptyList());
+	}
 }
