@@ -456,25 +456,5 @@ public class WorkspaceManager {
 	public boolean isDocumentOpen(URI uri) {
 		return openDocuments.containsKey(uri);
 	}
-	
-///	public void didChangeTextDocumentContent(URI uri, Integer version,
-///			Iterable<TextDocumentContentChangeEvent> changes) {
-///		Document contents = openDocuments.get(uri);
-///		if (contents == null) {
-///			LOG.error("The document " + uri + " has not been opened.");
-///		}
-///		openDocuments.put(uri, contents.applyTextDocumentChanges(changes));
-///		didChangeFiles(ImmutableList.of(uri), Collections.emptyList());
-//		BuildManager.Buildable buildable = buildManager.submit(ImmutableList.of(uri), Collections.emptyList());
-//		System.err.println("didchange :" + 
-//		List<IResourceDescription.Delta> deltas = buildable.build(cancelIndicator);
-
-//		こんなふうにvalidateメソッドを定義（もちろんvalidateまで実行を）できるか？
-//		List<IResourceDescription.Delta> deltas = buildable.validate(cancelIndicator);
-///	}
-	
-	public BuildManager.Buildable didSaveTextDocumentContent(URI uri) {
-		return didChangeFiles(ImmutableList.of(uri), Collections.emptyList());
-	}
 
 }

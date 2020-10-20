@@ -391,12 +391,7 @@ public class LanguageServerImpl implements LanguageServer, WorkspaceService, Tex
 
 	@Override
 	public void didChange(DidChangeTextDocumentParams params) {
-		System.err.println("didChange");
-//		runBuildable(() -> toBuildable(params));
 		runValidatable(() -> toBuildable(params));
-//		VersionedTextDocumentIdentifier textDocument = params.getTextDocument();
-//		workspaceManager.didChangeTextDocumentContent(getURI(textDocument), textDocument.getVersion(),
-//				params.getContentChanges());
 	}
 
 	/**
@@ -422,7 +417,6 @@ public class LanguageServerImpl implements LanguageServer, WorkspaceService, Tex
 
 	@Override
 	public void didSave(DidSaveTextDocumentParams params) {
-		System.err.println("didSave");
 		runBuildable(() -> toBuildable(params));
 	}
 	
@@ -478,9 +472,6 @@ public class LanguageServerImpl implements LanguageServer, WorkspaceService, Tex
 	}
 
 	private void publishDiagnostics(URI uri, Iterable<? extends Issue> issues) {
-		
-		(new Throwable()).printStackTrace();
-		
 		initialized.thenAccept((initParams) -> {
 			PublishDiagnosticsParams publishDiagnosticsParams = new PublishDiagnosticsParams();
 			publishDiagnosticsParams.setUri(uriExtensions.toUriString(uri));
